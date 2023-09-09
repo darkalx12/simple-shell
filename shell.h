@@ -216,16 +216,16 @@ int get_error(data_shell *datash, int eval);
 void get_sigint(int sig);
 
 /* aux_help.c */
-void aux_help_env(void);
-void aux_help_setenv(void);
-void aux_help_unsetenv(void);
-void aux_help_general(void);
-void aux_help_exit(void);
+void aux_helping_folder(void);
+void aux_helping_setfolder(void);
+void aux_helping_unsetfolder(void);
+void aux_helping_general(void);
+void aux_helping_exit(void);
 
 /* aux_help2.c */
-void aux_help(void);
-void aux_help_alias(void);
-void aux_help_cd(void);
+void auth_helping(void);
+void auth_helping_aliass(void);
+void auth_help_container(void);
 
 /* get_help.c */
 int get_help(data_shell *datash);
