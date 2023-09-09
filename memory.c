@@ -1,25 +1,25 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * _memcpy - copies information between void pointers.
+ * _memorycpy - copies information between void pointers.
  * @newptr: destination pointer.
  * @ptr: source pointer.
  * @size: size of the new pointer.
  *
  * Return: no return.
  */
-void _memcpy(void *newptr, const void *ptr, unsigned int size)
+void _memorycpy(void *newptr, const void *ptr, unsigned int size)
 {
 	char *char_ptr = (char *)ptr;
 	char *char_newptr = (char *)newptr;
-	unsigned int i;
+	unsigned int j;
 
-	for (i = 0; i < size; i++)
-		char_newptr[i] = char_ptr[i];
+	for (j = 0; j < size; j++)
+		char_newptr[j] = char_ptr[j];
 }
 
 /**
- * _realloc - reallocates a memory block.
+ * _real - reallocates a memory block.
  * @ptr: pointer to the memory previously allocated.
  * @old_size: size, in bytes, of the allocated space of ptr.
  * @new_size: new size, in bytes, of the new memory block.
@@ -28,7 +28,7 @@ void _memcpy(void *newptr, const void *ptr, unsigned int size)
  * if new_size == old_size, returns ptr without changes.
  * if malloc fails, returns NULL.
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *_real(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *newptr;
 
@@ -49,16 +49,16 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL);
 
 	if (new_size < old_size)
-		_memcpy(newptr, ptr, new_size);
+		_memorycpy(newptr, ptr, new_size);
 	else
-		_memcpy(newptr, ptr, old_size);
+		_memorycpy(newptr, ptr, old_size);
 
 	free(ptr);
 	return (newptr);
 }
 
 /**
- * _reallocdp - reallocates a memory block of a double pointer.
+ * _realcdp - reallocates a memory block of a double pointer.
  * @ptr: double pointer to the memory previously allocated.
  * @old_size: size, in bytes, of the allocated space of ptr.
  * @new_size: new size, in bytes, of the new memory block.
@@ -67,10 +67,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  * if new_size == old_size, returns ptr without changes.
  * if malloc fails, returns NULL.
  */
-char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
+char **_realcdp(char **ptr, unsigned int old_size, unsigned int new_size)
 {
 	char **newptr;
-	unsigned int i;
+	unsigned int j;
 
 	if (ptr == NULL)
 		return (malloc(sizeof(char *) * new_size));
@@ -82,8 +82,8 @@ char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 	if (newptr == NULL)
 		return (NULL);
 
-	for (i = 0; i < old_size; i++)
-		newptr[i] = ptr[i];
+	for (j = 0; j < old_size; j++)
+		newptr[j] = ptr[j];
 
 	free(ptr);
 
