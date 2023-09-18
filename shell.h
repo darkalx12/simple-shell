@@ -155,7 +155,7 @@ void bring_line(char **lineptr, size_t *n, char *buffer, size_t j);
 ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
 
 /* exec_line */
-int exec_line(data_shell *datash);
+int execute_line(data_shell *datash);
 
 /* cmd_exec.c */
 int is_cdir(char *path, int *i);
@@ -169,7 +169,7 @@ char *_getenv(const char *name, char **_environ);
 int _env(data_shell *datash);
 
 /* env2.c */
-char *copy_info(char *name, char *value);
+char *copy_in(char *name, char *value);
 void set_env(char *name, char *value, data_shell *datash);
 int _setenv(data_shell *datash);
 int _unsetenv(data_shell *datash);
@@ -187,7 +187,7 @@ int change_shell(data_shell *datash);
 int (*get_builtin(char *cmd))(data_shell *datash);
 
 /* _exit.c */
-int exit_shell(data_shell *datash);
+int cancel_shell(data_shell *datash);
 
 /* aux_stdlib.c */
 int get_len(int n);
