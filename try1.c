@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * free_data - frees data structure
@@ -63,7 +63,7 @@ int main(int ac, char **av)
 	data_shell datash;
 	(void) ac;
 
-	signal(SIGINT, sigint);
+	signal(SIGINT, get_sigint);
 	set_data(&datash, av);
 	shell_loop(&datash);
 	free_data(&datash);
