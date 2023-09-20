@@ -21,7 +21,7 @@ void check_folder(r_var **h, char *in, data_shell *data)
 			if (_folder[row][chart] == '=')
 			{
 				lval = _strlen(_folder[row] + chart + 1);
-				add_rvar_node(h, j, _folder[row] + chart + 1, lval);
+				add_end(h, j, _folder[row] + chart + 1, lval);
 				return;
 			}
 
@@ -38,7 +38,7 @@ void check_folder(r_var **h, char *in, data_shell *data)
 			break;
 	}
 
-	add_rvar_node(h, j, NULL, 0);
+	add_end(h, j, NULL, 0);
 }
 
 /**
@@ -62,19 +62,19 @@ int checked_vars(r_var **h, char *in, char *st, data_shell *data)
 		if (in[i] == '$')
 		{
 			if (in[i + 1] == '?')
-				add_rvar_node(h, 2, st, lst), i++;
+				add_end(h, 2, st, lst), i++;
 			else if (in[i + 1] == '$')
-				add_rvar_node(h, 2, data->pid, pwd), i++;
+				add_end(h, 2, data->pid, pwd), i++;
 			else if (in[i + 1] == '\n')
-				add_rvar_node(h, 0, NULL, 0);
+				add_end(h, 0, NULL, 0);
 			else if (in[i + 1] == '\0')
-				add_rvar_node(h, 0, NULL, 0);
+				add_end(h, 0, NULL, 0);
 			else if (in[i + 1] == ' ')
-				add_rvar_node(h, 0, NULL, 0);
+				add_end(h, 0, NULL, 0);
 			else if (in[i + 1] == '\t')
-				add_rvar_node(h, 0, NULL, 0);
+				add_end(h, 0, NULL, 0);
 			else if (in[i + 1] == ';')
-				add_rvar_node(h, 0, NULL, 0);
+				add_end(h, 0, NULL, 0);
 			else
 				check_folder(h, in + i, data);
 		}
@@ -177,7 +177,7 @@ char *rep_var(char *input, data_shell *datash)
 
 	free(input);
 	free(status);
-	free_rvar_list(&head);
+	free_rival(&head);
 
 	return (new_input);
 }
